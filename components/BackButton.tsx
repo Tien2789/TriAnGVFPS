@@ -1,6 +1,6 @@
 
 import React from 'react';
-import ArrowLeftIcon from './icons/ArrowLeftIcon';
+import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 
 interface BackButtonProps {
   onClick: () => void;

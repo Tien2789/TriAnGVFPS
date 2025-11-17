@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { Screen } from './types';
-import HomeScreen from './components/HomeScreen';
-import WishesScreen from './components/WishesScreen';
-import MomentsScreen from './components/MomentsScreen';
-import SongScreen from './components/SongScreen';
-import PoemScreen from './components/PoemScreen';
+import { Screen } from './types.ts';
+import HomeScreen from './components/HomeScreen.tsx';
+import WishesScreen from './components/WishesScreen.tsx';
+import MomentsScreen from './components/MomentsScreen.tsx';
+import SongScreen from './components/SongScreen.tsx';
+import PoemScreen from './components/PoemScreen.tsx';
 
 const App: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.Home);

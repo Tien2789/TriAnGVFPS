@@ -1,6 +1,6 @@
 
 import React from 'react';
-import BackButton from './BackButton';
+import BackButton from './BackButton.tsx';
 
 interface SongScreenProps {
   onBack: () => void;
