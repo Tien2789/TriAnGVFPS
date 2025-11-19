@@ -1,6 +1,4 @@
-
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
 import { GoogleGenAI } from "@google/genai";
 
 // --- Inlined Code from other files ---
@@ -238,7 +236,12 @@ const PoemGeneratorScreen: React.FC<PoemGeneratorScreenProps> = ({ onBack }) => 
     setGeneratedPoem('');
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      // IMPORTANT: You need to set up environment variables for this to work in production
+      const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error("API key is missing. Please set VITE_GEMINI_API_KEY in your .env file.");
+      }
+      const ai = new GoogleGenAI({ apiKey });
       const prompt = `Hãy viết một bài thơ ngắn (4-8 câu) bằng tiếng Việt để tri ân thầy cô nhân ngày 20/11. Bài thơ cần trong sáng, giàu cảm xúc và dựa trên những từ khóa sau: "${keywords}".`;
       
       const response = await ai.models.generateContent({
@@ -371,16 +374,4 @@ const App: React.FC = () => {
   );
 };
 
-
-// --- Original render logic from index.tsx ---
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default App;
